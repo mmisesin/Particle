@@ -26,9 +26,6 @@ type_body_length:
   - 300 # warning
   - 400 # error
 
-line_length:
-  warning: 140
-
 # or they can set both explicitly
 file_length:
   warning: 500

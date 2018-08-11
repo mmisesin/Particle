@@ -16,8 +16,6 @@
 		35657B8320BCB10200F14269 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35657B8220BCB10200F14269 /* DismissAnimator.swift */; };
 		35657B8520BE0D6300F14269 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35657B8420BE0D6300F14269 /* Interactor.swift */; };
 		3575C6491FA2BB9900169D15 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3575C6481FA2BB9900169D15 /* MainNavigationController.swift */; };
-		35762D8E207A536B0078F1E7 /* VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35762D8D207A536B0078F1E7 /* VPN.swift */; };
-		35762D90207A57E60078F1E7 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35762D8F207A57E60078F1E7 /* KeychainService.swift */; };
 		35762D92207B585C0078F1E7 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35762D91207B585C0078F1E7 /* Translation.swift */; };
 		35768BAE1FA9E497007D3EF1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35768BAD1FA9E497007D3EF1 /* APIError.swift */; };
 		35768BB01FA9E68C007D3EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35768BAF1FA9E68C007D3EF1 /* Constants.swift */; };
@@ -113,8 +111,6 @@
 		35657B8220BCB10200F14269 /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
 		35657B8420BE0D6300F14269 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		3575C6481FA2BB9900169D15 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		35762D8D207A536B0078F1E7 /* VPN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPN.swift; sourceTree = "<group>"; };
-		35762D8F207A57E60078F1E7 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		35762D91207B585C0078F1E7 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		35768BAD1FA9E497007D3EF1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		35768BAF1FA9E68C007D3EF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -234,11 +230,8 @@
 			children = (
 				35768BAD1FA9E497007D3EF1 /* APIError.swift */,
 				C63D26F21F04D36700F062FE /* ArticleParser.swift */,
-				35768BAF1FA9E68C007D3EF1 /* Constants.swift */,
-				35762D8F207A57E60078F1E7 /* KeychainService.swift */,
 				C6C9D84E1F03C5DF003FC159 /* ParticleHandler.swift */,
 				35073D261FAE142800543CC6 /* Translator.swift */,
-				35762D8D207A536B0078F1E7 /* VPN.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -334,11 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				35BA900720FEAAA9008B152A /* CGSizeExtensions.swift */,
+				3587AAE5211B7D3A007FA8C6 /* DateExtensions.swift */,
 				35BA900B20FEAAF7008B152A /* StringExtensions.swift */,
 				35BA900F20FEAB24008B152A /* UIColorExtensions.swift */,
 				35BA900920FEAADA008B152A /* UIImageExtensions.swift */,
 				35BA900D20FEAB0F008B152A /* UITextInputExtensions.swift */,
-				3587AAE5211B7D3A007FA8C6 /* DateExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -346,7 +339,6 @@
 		35BA901120FEAC08008B152A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				C610ACAF1F01817E00CA1B72 /* Colors.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -386,6 +378,8 @@
 		35DC20CC21014071002000CD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C610ACAF1F01817E00CA1B72 /* Colors.swift */,
+				35768BAF1FA9E68C007D3EF1 /* Constants.swift */,
 				35DC20CB2101406A002000CD /* Logger */,
 			);
 			name = Shared;
@@ -695,7 +689,6 @@
 				C63D26F31F04D36700F062FE /* ArticleParser.swift in Sources */,
 				35BA900820FEAAA9008B152A /* CGSizeExtensions.swift in Sources */,
 				35768BB01FA9E68C007D3EF1 /* Constants.swift in Sources */,
-				35762D90207A57E60078F1E7 /* KeychainService.swift in Sources */,
 				359E52C81F20011400F73B82 /* ArticleContent.swift in Sources */,
 				C6C9D84F1F03C5DF003FC159 /* ParticleHandler.swift in Sources */,
 				357D9B1A1F65F81E00280368 /* TranslateTableViewCell.swift in Sources */,
@@ -710,7 +703,6 @@
 				C6B1B0291F0024FA00226A9F /* AppDelegate.swift in Sources */,
 				3587AAE6211B7D3A007FA8C6 /* DateExtensions.swift in Sources */,
 				35DC20CE210144B9002000CD /* LogOutput.swift in Sources */,
-				35762D8E207A536B0078F1E7 /* VPN.swift in Sources */,
 				352DDFB11F77D554009E8B0E /* SlideInPresentationManager.swift in Sources */,
 				C6F0C6D21F03C2B900932DFF /* CoreDataStack.swift in Sources */,
 				35DC20D32101B6E8002000CD /* LoggerMessage.swift in Sources */,
