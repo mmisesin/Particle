@@ -8,82 +8,54 @@
 
 import Foundation
 
-enum TranslatorType {
-    case google, yandex
+protocol TranslatorProtocol {
+    
+    var configuration: TranslatorConfiguration { get }
+    
+    func translate(_ text: String, from sourceLanguage: Language, to targetLanguage: Language, callback: @escaping (Data?, APIError?) -> Void)
+    
+}
+
+class YandexTranslator: TranslatorProtocol {
+    
+    var configuration: TranslatorConfiguration = TranslatorConfiguration(type: .yandex)
+    
+    func translate(_ text: String, from sourceLanguage: Language, to targetLanguage: Language, callback: @escaping (Data?, APIError?) -> Void) {
+        guard let urlEncodedText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            callback(nil, APIError(errorDescription: "There was an error with url encoded text"))
+            return
+        }
+        
+        let urlString = configuration.apiBaseURL + urlEncodedText
+        guard let url = URL(string: urlString) else {
+            callback(nil, APIError(errorDescription: "Could not initialize a url from \(urlString)"))
+            return
+        }
+        let request = URLSession.shared.dataTask(with: url) { (data, response, error)  in
+            guard
+                error == nil,
+                let httpResponse = response as? HTTPURLResponse
+                else {
+                callback(nil, error?.apiError)
+                    return
+            }
+            switch httpResponse.statusCode {
+            case 200...299:
+                callback(data, nil)
+            default:
+                callback(nil, APIError(errorDescription: "Request returned \(httpResponse.statusCode) code"))
+            }
+        }.resume()
+    }
+    
 }
 
 class Translator {
     
-    private var type: TranslatorType = .yandex
-    
     static let shared = Translator()
     
-    private let googleAPIKey = "AIzaSyAie4YCtNVZCcD1hKvp3qAG-cp3W9rjTu8"
-    private lazy var googleBaseURL = "https://translation.googleapis.com/language/translate/v2?key=\(self.googleAPIKey)"
-    private let yandexAPIKey = "dict.1.1.20180408T151828Z.256bc5f4f0a61741.b082d563d53d250c7a3b6615a94d2562a7bd13c7"
-    private lazy var yandexBaseURL = "https://dictionary.yandex.net/api/v1/dicservice.json//lookup?key=\(yandexAPIKey)&lang=en-ru&text="
-    
-    lazy private var apiKey: String = {
-        switch type {
-        case .google:
-            return googleAPIKey
-        case .yandex:
-            return yandexAPIKey
-        }
-    }()
-    
-    lazy private var baseURL: String = {
-        switch type {
-        case .google:
-            return googleBaseURL
-        case .yandex:
-            return yandexBaseURL
-        }
-    }()
-    
-    func translate(_ text: String, callback: @escaping (TranslationResult?) -> Void) {
-        var urlString = ""
-        if let urlEncodedText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            switch type {
-            case .google:
-                urlString = baseURL + "&q=\(urlEncodedText)&source=en&target=ru&format=text"
-            case .yandex:
-                urlString = baseURL + urlEncodedText
-            }
-        } else {
-            preconditionFailure("There was an error with url encoded text")
-        }
-        if let url = URL(string: urlString) {
-            let request = URLSession.shared.dataTask(with: url) { (data, response, error)  in
-                guard error == nil else {
-                    callback(nil)
-                    return
-                }
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    
-                    guard httpResponse.statusCode == 200 else {
-                        
-                        if let data = data {
-                            print("Response [\(httpResponse.statusCode)] - \(data)")
-                        }
-                        callback(nil)
-                        return
-                    }
-                    if let data = data {
-                        let decoder = JSONDecoder()
-                        do {
-                            let result = try decoder.decode(TranslationResult.self, from: data)
-                            callback(result)
-                        } catch {
-                            print(error.localizedDescription)
-                            callback(nil)
-                        }
-                    }
-                }
-            }
-            request.resume()
-        }
-    }
-    
+    private let googleAPIKey = ""
+    private lazy var googleBaseURL = "\(self.googleAPIKey)"
+    private let yandexAPIKey = ""
+    private lazy var yandexBaseURL = "\(yandexAPIKey)&lang=en-ru&text="
 }

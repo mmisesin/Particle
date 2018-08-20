@@ -20,6 +20,7 @@ struct APIError: Error {
     }
     
     init(errorDescription: String) {
+        logger.error(errorDescription)
         self.domain = ""
         self.code = 0
         self.userInfo = [NSLocalizedDescriptionKey: errorDescription]

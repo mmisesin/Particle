@@ -11,23 +11,17 @@ import CoreData
 
 final class ParticleHandler {
     
-    private var articles = [ParticleReading]()
-    private var filteredArticles = [ParticleReading]()
-    var filteredRanges = [NSRange]()
+    private let coreDataStack = CoreDataStack {
+        logger.info("CoreData stack is ready.")
+    }
     
-    static let shared = ParticleHandler()
-    
-    let context = CoreDataStack.mainQueueContext()
-    
-    func addArticle(url: String, progress: Double = 0.0, creationDate: Date) {
-        if let article = NSEntityDescription.insertNewObject(forEntityName: "ParticleReading", into: context) as? ParticleReading {
-            let date: Double = NSDate().timeIntervalSince1970
-            article.url = url
-            article.id = date
-            article.creationDate = creationDate as NSDate
-            article.progress = progress
-            CoreDataStack.saveContext()
-        }
+    func addArticle(url: String) {
+        let article = Article(context: coreDataStack.editorContext())
+        article.creationDate = Date()
+        article.progress = 0
+        article.thumbnail
+        article.url = url
+        coreDataStack.editorContext().save()
     }
     
     func deleteArticle(with id: Double, completion: @escaping (_ response: Bool?) -> Void) {
@@ -38,13 +32,8 @@ final class ParticleHandler {
         }
     }
     
-    func articlesData() -> [ParticleReading] {
-        do {
-            articles = try context.fetch(ParticleReading.fetchRequest())
-        } catch {
-            print("Error fetching data from CoreData")
-        }
-        return articles
+    func fetchArticles() -> [Article] {
+        let fetchRequest = NSFetchRequest(entityName: "Article")
     }
     
     func loadedArticlesData() -> [ParticleReading] {

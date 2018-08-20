@@ -19,7 +19,7 @@ enum SearchStatus {
 }
 
 final class SavedTableViewController: UITableViewController {
-
+    
     private var selectedArticle: Int?
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchString: String?

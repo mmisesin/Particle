@@ -2,6 +2,30 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/ArticleContent+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/ArticleContent+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/Paragraph+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/Paragraph+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/StyledItem+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/StyledItem+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/Article+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/misesin/Developer/Projects/Particle/Particle/Article+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Particle.xcodeproj">
    </FileRef>
    <FileRef

@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Google Configuration</key>
+	<dict>
+		<key>apiKey</key>
+		<string>AIzaSyAie4YCtNVZCcD1hKvp3qAG-cp3W9rjTu8</string>
+		<key>baseURL</key>
+		<string>https://translation.googleapis.com/language/translate/v2?key=</string>
+	</dict>
+	<key>Yandex Configuration</key>
+	<dict>
+		<key>apiKey</key>
+		<string>dict.1.1.20180408T151828Z.256bc5f4f0a61741.b082d563d53d250c7a3b6615a94d2562a7bd13c7</string>
+		<key>baseURL</key>
+		<string>https://dictionary.yandex.net/api/v1/dicservice.json//lookup?key=</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

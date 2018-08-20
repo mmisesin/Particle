@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Article" representedClassName="Article" syncable="YES" codeGenerationType="category">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isLoaded" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastRead" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="progress" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleContent" inverseName="article" inverseEntity="ArticleContent" syncable="YES"/>
+    </entity>
+    <entity name="ArticleContent" representedClassName="ArticleContent" syncable="YES" codeGenerationType="category">
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="content" inverseEntity="Article" syncable="YES"/>
+        <relationship name="paragraphs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Paragraph" inverseName="articleContent" inverseEntity="Paragraph" syncable="YES"/>
+    </entity>
+    <entity name="Paragraph" representedClassName="Paragraph" syncable="YES" codeGenerationType="category">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="articleContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArticleContent" inverseName="paragraphs" inverseEntity="ArticleContent" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StyledItem" inverseName="paragraph" inverseEntity="StyledItem" syncable="YES"/>
+    </entity>
+    <entity name="StyledItem" representedClassName="StyledItem" syncable="YES" codeGenerationType="category">
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="style" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paragraph" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paragraph" inverseName="items" inverseEntity="Paragraph" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="ArticleContent" positionX="-54" positionY="45" width="128" height="75"/>
+        <element name="Paragraph" positionX="-36" positionY="72" width="128" height="90"/>
+        <element name="StyledItem" positionX="-18" positionY="81" width="128" height="90"/>
+    </elements>
+</model>

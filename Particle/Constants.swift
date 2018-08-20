@@ -9,7 +9,7 @@
 import Foundation
 
 struct Constants {
-    
+  
     static let unknownErrorDescription = NSLocalizedString("Unknown error", comment: "")
     static let unknownTitle = NSLocalizedString("Unknown title", comment: "")
     static let unknownLink = NSLocalizedString("Unknown link", comment: "")
